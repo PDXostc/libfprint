@@ -7,7 +7,11 @@ License:  LGPL-2.1
 URL:      http://www.freedesktop.org/wiki/Software/fprint/libfprint/
 Source0:  http://people.freedesktop.org/~hadess/%{name}-%{version}.tar.xz
 
-BuildRequires:  pkgconfig(capi-appfw-package-manager)
+BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(nss)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(pixman-1)
 
 %define debug_package %{nil}
 
@@ -21,7 +25,7 @@ their software.
 
 %build
 %autogen
-%configure
+%configure --enable-x11-examples-build=no
 make %{?_smp_mflags}
 
 %install
